@@ -28,9 +28,7 @@ import { useInsertElement } from '..';
 import { TEXT_ELEMENT_DEFAULT_FONT } from '../../../app/font/defaultFonts';
 import createSolid from '../../../utils/createSolid';
 
-// @todo: Figure out the flakiness source and enable.
-// eslint-disable-next-line jasmine/no-disabled-tests
-xdescribe('Carousel integration', () => {
+describe('Carousel integration', () => {
   let fixture;
   let element1;
   let carousel;
