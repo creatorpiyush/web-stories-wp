@@ -28,7 +28,7 @@ import { useInsertElement } from '..';
 import { TEXT_ELEMENT_DEFAULT_FONT } from '../../../app/font/defaultFonts';
 import createSolid from '../../../utils/createSolid';
 
-describe('Carousel integration', () => {
+fdescribe('Carousel integration', () => {
   let fixture;
   let element1;
   let carousel;
@@ -54,7 +54,8 @@ describe('Carousel integration', () => {
       })
     );
 
-    carousel = fixture.container.querySelector('[data-testid="PageCarousel"]');
+    // QQQQ: remove
+    carousel = fixture.editor.carousel.node;
   });
 
   afterEach(() => {
@@ -79,10 +80,8 @@ describe('Carousel integration', () => {
   }
 
   function getThumbnail(index) {
-    const thumbnails = carousel.querySelectorAll(
-      '[role="listbox"] button[role="option"]'
-    );
-    return thumbnails[index];
+    // QQQQ: inline?
+    return fixture.editor.carousel.pages[index];
   }
 
   it('should select the current page', async () => {
@@ -98,11 +97,7 @@ describe('Carousel integration', () => {
 
   it('should exit the carousel on Esc', async () => {
     await fixture.events.mouse.clickOn(getThumbnail(0), 5, 5);
-    await waitFor(() => {
-      if (!carousel.contains(document.activeElement)) {
-        throw new Error('Focus is not set on the carousel yet');
-      }
-    });
+    await fixture.editor.carousel.waitFocusedWithin();
 
     // Exit.
     await fixture.events.keyboard.press('Esc');
