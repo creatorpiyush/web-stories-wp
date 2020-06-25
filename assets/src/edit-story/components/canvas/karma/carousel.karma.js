@@ -75,6 +75,8 @@ describe('Carousel integration', () => {
     const bcr = ({ x, y, width, height }) =>
       `x=${x}, y=${y}, w=${width}, h=${height}`;
     // eslint-disable-next-line no-console
+    console.log('QQQQ: screen: ', innerWidth, innerHeight);
+    // eslint-disable-next-line no-console
     console.log(
       'QQQQ: carousel bcr: ',
       bcr(fixture.editor.carousel.node.getBoundingClientRect())
