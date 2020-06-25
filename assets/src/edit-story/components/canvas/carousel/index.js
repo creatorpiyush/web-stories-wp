@@ -361,8 +361,11 @@ function Carousel() {
 
   return (
     <>
-      <Wrapper ref={wrapperRef} data-testid="PageCarousel"
-        aria-label={__('Page Carousel', 'web-stories')} >
+      <Wrapper
+        ref={wrapperRef}
+        data-testid="PageCarousel"
+        aria-label={__('Page Carousel', 'web-stories')}
+      >
         <NavArea area="space" />
         <NavArea area="prev-navigation" marginBottom={arrowsBottomMargin}>
           <PrevButton
