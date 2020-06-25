@@ -251,6 +251,7 @@ function Carousel() {
     width: COMPACT_THUMB_WIDTH,
     height: COMPACT_THUMB_HEIGHT,
   });
+  const [resizedForPages, setResizedForPages] = useState(0);
 
   const isCompact =
     calculateThumbnailHeight(carouselSize) < MIN_CAROUSEL_THUMB_HEIGHT;
@@ -266,6 +267,7 @@ function Carousel() {
       setHasHorizontalOverflow(Math.ceil(scrollWidth) > Math.ceil(offsetWidth));
       setScrollPercentage(scrollLeft / max);
       setCarouselSize(currentCarouselSize);
+      setResizedForPages(pages.length);
     },
     [pages.length]
   );
@@ -365,6 +367,7 @@ function Carousel() {
         ref={wrapperRef}
         data-testid="PageCarousel"
         aria-label={__('Page Carousel', 'web-stories')}
+        data-ready={resizedForPages === pages.length}
       >
         <NavArea area="space" />
         <NavArea area="prev-navigation" marginBottom={arrowsBottomMargin}>

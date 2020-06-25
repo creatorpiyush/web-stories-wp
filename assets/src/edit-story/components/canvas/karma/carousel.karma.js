@@ -71,20 +71,10 @@ describe('Carousel integration', () => {
   }
 
   async function clickOnThumbnail(index) {
+    await fixture.editor.carousel.waitReady();
     const thumb = fixture.editor.carousel.pages[index];
-    const bcr = ({ x, y, width, height }) =>
-      `x=${x}, y=${y}, w=${width}, h=${height}`;
-    // eslint-disable-next-line no-console
-    console.log('QQQQ: screen: ', innerWidth, innerHeight);
-    // eslint-disable-next-line no-console
-    console.log(
-      'QQQQ: carousel bcr: ',
-      bcr(fixture.editor.carousel.node.getBoundingClientRect())
-    );
-    // eslint-disable-next-line no-console
-    console.log('QQQQ: thumb bcr: ', bcr(thumb.node.getBoundingClientRect()));
+    thumb.node.scrollIntoView();
     await fixture.events.mouse.clickOn(thumb.node, 5, 5);
-    await fixture.editor.carousel.waitFocusedWithin();
   }
 
   it('should select the current page', async () => {
